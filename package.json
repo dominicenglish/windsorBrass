@@ -1,0 +1,22 @@
+{
+    "name": "windsor-brass",
+    "version": "0.0.0",
+    "description": "Website for Windsor Brass",
+    "main": "index.js",
+    "author": "Dominic English",
+    "dependencies": {
+        "express": "latest",
+        "jade": "latest",
+        "bower": "latest",
+        "grunt": "latest",
+        "grunt-cli": "latest",
+        "view-helpers": "latest"
+    },
+    "devDependencies": {
+        "grunt-contrib-watch": "latest",
+        "grunt-contrib-jshint": "latest",
+        "grunt-nodemon": "latest",
+        "grunt-concurrent": "latest",
+        "grunt-contrib-sass": "latest"
+    }
+}
