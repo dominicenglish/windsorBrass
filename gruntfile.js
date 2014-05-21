@@ -10,13 +10,13 @@ module.exports = function(grunt) {
             }
         },
         jshint: {
-            all: ['gruntfile.js', 'public/js/**/*.js', 'index.js', 'app/**/*.js']
+            all: ['gruntfile.js', 'client/js/**/*.js', 'index.js', 'server/**/*.js']
         },
         nodemon: {
             default: {
                 script: 'index.js',
                 options: {
-                    watch: ['index.js', 'app/**'],
+                    watch: ['index.js', 'server/**'],
                     cwd: __dirname
                 }
             }
@@ -28,32 +28,32 @@ module.exports = function(grunt) {
                     sourcemap: true
                 },
                 files: {
-                    'public/css/main.css': 'public/css/sass/main.scss'
+                    'client/css/main.css': 'client/css/sass/main.scss'
                 }
             }
         },
         watch: {
             jade: {
-                files: ['app/views/**/*.jade'],
+                files: ['server/views/**/*.jade'],
                 options: {
                     livereload: true
                 },
             },
             js: {
-                files: ['index.js', 'public/js/**', 'app/**/*.js'],
+                files: ['index.js', 'client/js/**', 'server/**/*.js'],
                 tasks: ['jshint'],
                 options: {
                     livereload: true
                 }
             },
             css: {
-                files: ['public/css/*.css'],
+                files: ['client/css/*.css'],
                 options: {
                     livereload: true
                 }
             },
             sass: {
-                files: ['public/css/sass/**/*.scss'],
+                files: ['client/css/sass/**/*.scss'],
                 tasks: ['sass']
             }
         }

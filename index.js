@@ -11,8 +11,8 @@ app.use(express.compress({
     level: 9
 }));
 
-app.use(express.static('public'));
-app.set('views', 'app/views');
+app.use(express.static('client'));
+app.set('views', 'server/views');
 app.set('view engine', 'jade');
 
 // View helpers

@@ -1,4 +1,5 @@
 node_modules/
-public/lib
+client/lib
+client/img
 .sass-cache/
 *sublime*

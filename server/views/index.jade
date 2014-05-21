@@ -1,0 +1,50 @@
+extends layout
+
+block content
+    nav.site-nav
+        a.site-nav-logo
+            img(src="/img/windsor_logo.png")
+        button.hamburger.navbar-toggle(type="button" ng-click="mobileNav.toggle()")
+            span.hamburger-bar
+            span.hamburger-bar
+            span.hamburger-bar
+    .container
+        .surface
+            .background-size-full(full-height)
+                .banner-image
+                .banner-overlay
+                .banner-content-wrapper
+                    .banner-content
+                a.banner-arrow-wrapper(scroll-to-next-scroll-point)
+                    span.banner-arrow
+            section.page-wrapper
+                .page-wrapper-inner
+                    .content.slats
+
+                        section.slat.intro(full-height scroll-position='intro')
+                            .container
+                                p The younger sibling of Brisbane Excelsior Band, Windsor Brass is a champion B Grade brass band with a strong focus on entertainment and fun winning Most Entertaining Band at the 2009 Nambour Festival of Brass.
+                                p With a commitment to excellence, the band welcomes players of all ages.
+                                p Active players span from high school students to retirees.
+                                p(ng-repeat="event in events") {{event}}
+
+                        //- section.slat.known
+                        //-     .container
+                        //-         //- img(src="/img/IMG_1907-2.jpg")
+                        //-         p It has become well known around Brisbane for its many park performances of traditional marches and crowd-pleasing favourites.
+                        section.slat.history(full-height scroll-position='history')
+                            .container
+                                p Windsor Brass was formed in 2002 and began competing in the D Grade event of the 2003 Queensland State Championships and was regraded to C Grade mid-2004 only to be regraded again to B Grade later that year due to the quality of its contesting performances. In 2010, Windsor won its first B Grade State Championships. It has has repeated this performance twice more since then, becoming B Grade Champions in both 2011 and 2013.
+                        section.slat.welcome(full-height scroll-position='form')
+                            .container
+                                form
+                                    h2 Contact Us
+                                    .row
+                                        label(for="form-name") Name
+                                        input#form-name(type="text" placeholder="Name...")
+                                    .row
+                                        label(for="form-email") Email
+                                        input#form-name(type="text" placeholder="Email...")
+                                    .row
+                                        label.message(for="form-message") Message
+                                        textarea#form-message(placeholder="Message...")

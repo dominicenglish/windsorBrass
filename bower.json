@@ -2,6 +2,7 @@
     "name": "windsor-brass",
     "version": "0.0.0",
     "dependencies": {
-
+        "angular-scroll": "latest",
+        "angular-resource": "latest"
     }
 }
