@@ -14,9 +14,15 @@ angular.module('windsor', ['duScroll', 'ngResource'])
 
 .factory('EventResource', ['$resource', function($resource) {
     var calendarId = 'ausbrass.com_7ff0icqnt45drrqqtun4eojl08@group.calendar.google.com';
+    var apiKey = 'AIzaSyCA_lBJD_eqsxjQ22fFHkGu8zTW8xTu3Fc';
+    var occursAfter = new Date();
     return $resource(
         'https://www.googleapis.com/calendar/v3/calendars/:calendarId/events',
-        {calendarId: calendarId}
+        {
+            calendarId: calendarId,
+            key: apiKey,
+            timeMin: occursAfter.toISOString()
+        }
     );
 }])
 
@@ -25,6 +31,7 @@ angular.module('windsor', ['duScroll', 'ngResource'])
         EventResource.get()
         .$promise.then(function(events) {
             $scope.events = events;
+            console.log($scope.events);
         });
     };
     $scope.getEvents();

@@ -1,0 +1,51 @@
+$Agenda-font-size: 1rem !default;
+$Agenda-color: #333 !default;
+$Agenda-color--hover: #d55b5e !default;
+$Agenda-event-background: inherit !default;
+$Agenda-event-background--hover: $Agenda-event-background;
+
+$DateStacked-font-size: 0.7rem !default;
+
+.Agenda {
+    display: block;
+    font-size: $Agenda-font-size;
+    text-align: left;
+    color: $Agenda-color;
+}
+
+.Agenda-event {
+    display: table;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+    border-bottom: solid 1px #eee;
+    border-top: solid 1px #fefefe;
+}
+
+.Agenda-event:hover {
+    color: $Agenda-color--hover;
+}
+
+.Agenda-event:first-of-type {
+    border-top: none;
+}
+
+.Agenda-event:last-of-type {
+    border-bottom: none;
+}
+
+.Agenda-date {
+    display: table-cell;
+    vertical-align: middle;
+    width: $Agenda-font-size * 4;
+    height: $Agenda-font-size * 4;
+}
+
+.Agenda-info {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.Agenda-location {
+    font-size: 0.7em;
+}

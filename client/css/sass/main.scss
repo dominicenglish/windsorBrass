@@ -1,8 +1,17 @@
+@import 'components/agenda';
+@import 'components/date-stacked';
+
 $slightly-transparent-black: rgba(40, 40, 40, 0.98);
+
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
-    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneve, Verdana, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneve, Verdana, sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -22,6 +31,12 @@ html, body, .container {
     html, body, .container {
         font-size: 30px;
     }
+}
+
+h2 {
+    padding: 2rem 0 1rem 1.1rem;
+    width: 15rem;
+    margin: auto;
 }
 
 .site-nav, .site-nav-logo {
@@ -99,7 +114,6 @@ $hamburger-bar-width: 20px;
     top: 0;
     height: 100%;
     width: 100%;
-    box-sizing: border-box;
 }
 
 .surface:before, .surface:after {
@@ -127,6 +141,10 @@ $hamburger-bar-width: 20px;
     background-image: url(/img/tree.jpg);
     background-size: cover;
     background-position: center;
+}
+
+.banner-image {
+    box-shadow: 0 2px 20px rgba(0,60,0,0.3)
 }
 
 .banner-overlay {
@@ -200,7 +218,7 @@ $banner-arrow-width: 16px;
     height: 100%;
     font-size: 20px;
     line-height: 1.4;
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    font-family: "Helvetica Neue", Helvetica, Georgia, Cambria, "Times New Roman", Times, serif;
     letter-spacing: 0.01rem;
     font-weight: 400;
     font-style: normal;
@@ -213,12 +231,12 @@ $banner-arrow-width: 16px;
 
 section .container {
     padding: 0 0.5rem;
-    display: table;
+    // display: table;
 }
 
 section p {
-    display: table-cell;
-    vertical-align: middle;
+    // display: table-cell;
+    // vertical-align: middle;
     text-align: center;
 }
 
@@ -353,4 +371,10 @@ textarea {
     textarea {
         height: 15rem;
     }
+}
+
+.Agenda {
+    width: 15rem;
+    margin: auto;
+    // box-shadow: 1px 1px 2px #eee;
 }

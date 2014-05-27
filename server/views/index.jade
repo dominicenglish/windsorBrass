@@ -21,12 +21,29 @@ block content
                 .page-wrapper-inner
                     .content.slats
 
+                        section.slat
+                            .container
+                                h2 Upcoming Events
+                                .Agenda
+                                    .Agenda-event(ng-repeat="item in events.items")
+                                        .Agenda-date
+                                            .DateStacked
+                                                .DateStacked-day {{item.start.dateTime | date:'EEE'}}
+                                                .DateStacked-date {{item.start.dateTime | date:'dd'}}
+                                                .DateStacked-month {{item.start.dateTime | date:'MMM'}}
+                                        .Agenda-info
+                                            .Agenda-title {{item.summary}}
+                                            .Agenda-location {{item.location.substr(0, item.location.indexOf(','))}}
+
+
                         section.slat.intro(full-height scroll-position='intro')
                             .container
+                                h2 Who we Are
                                 p The younger sibling of Brisbane Excelsior Band, Windsor Brass is a champion B Grade brass band with a strong focus on entertainment and fun winning Most Entertaining Band at the 2009 Nambour Festival of Brass.
                                 p With a commitment to excellence, the band welcomes players of all ages.
                                 p Active players span from high school students to retirees.
-                                p(ng-repeat="event in events") {{event}}
+
+
 
                         //- section.slat.known
                         //-     .container
