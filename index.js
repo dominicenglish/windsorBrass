@@ -19,6 +19,9 @@ app.set('view engine', 'jade');
 app.use(viewHelpers('windsor-brass'));
 
 // Routes
+app.get('/test', function(req, res) {
+    res.render('test', {});
+});
 app.all('*', function(req, res) {
     res.render('index', {});
 });
