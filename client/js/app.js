@@ -47,6 +47,7 @@ angular.module('windsor', ['duScroll', 'ngResource'])
             };
 
             var setElementHeight = function(height) {
+                console.log('height changed');
                 element.css('height', height+'px');
                 ViewportService.setViewportHeight(height);
             };
@@ -57,7 +58,10 @@ angular.module('windsor', ['duScroll', 'ngResource'])
 
             angular.element($window).on('resize', function(event) {
                 if ($window.document.activeElement.tagName === 'BODY') {
-                    heightChanged();
+                    // Ignore mobile resizes
+                    if ($window.innerWidth >= 768) {
+                        heightChanged();
+                    }
                 }
             });
 
@@ -113,9 +117,22 @@ angular.module('windsor', ['duScroll', 'ngResource'])
                 }
             };
 
-            var distance = findPosition(element[0]);
+            var setScrollPosition = function() {
+                var distance = findPosition(element[0]);
+                ScrollPointService.setScrollPoint(scope.name, distance);
+            };
 
-            ScrollPointService.setScrollPoint(scope.name, distance);
+            angular.element($window).on('resize', function(event) {
+                if ($window.document.activeElement.tagName === 'BODY') {
+                    // Ignore mobile resizes
+                    // if ($window.innerWidth >= 768) {
+                    //     heightChanged();
+                    // }
+                    setScrollPosition();
+                }
+            });
+
+            setScrollPosition();
         }
     };
 }])
