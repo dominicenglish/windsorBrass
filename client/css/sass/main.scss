@@ -1,5 +1,6 @@
 @import 'components/agenda';
 @import 'components/date-stacked';
+@import 'components/slat';
 
 $slightly-transparent-black: rgba(40, 40, 40, 0.98);
 
@@ -34,9 +35,13 @@ html, body, .container {
 }
 
 h2 {
-    padding: 2rem 0 1rem 1.1rem;
-    width: 15rem;
-    margin: auto;
+    // padding: 2rem 0 1rem 1.1rem;
+    // padding: 0 0 1rem 1.1rem;
+    // width: 15rem;
+    // margin: auto;
+    // color: #EB4F4F;
+    margin-top: 0;
+
 }
 
 .site-nav, .site-nav-logo {
@@ -225,12 +230,12 @@ $banner-arrow-width: 16px;
 }
 
 .content section {
-    height: 100%;
+    // height: 100%;
     width: auto;
 }
 
 section .container {
-    padding: 0 0.5rem;
+    padding: 0rem 0.5rem;
     // display: table;
 }
 
@@ -246,14 +251,26 @@ section img {
 
 .slat {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
     text-shadow: 0 1px rgba(0,0,0,0.25);
     background-size: cover;
+    min-height: 100%;
+}
+
+.slat-column {
+    margin: 0 2rem;
 }
 
 .slat .container {
     max-width: 25em;
     max-width: 25rem;
-    margin: 0 auto;
+    // margin: 0 auto;
+    height: auto;
 }
 
 @media (min-width: 768px) {
@@ -261,9 +278,47 @@ section img {
     max-width: 20rem;
 }
 
+.slat .icon {
+    display: flex;
+    font-size: 2rem;
+    // color: #bbb;
+    text-shadow: none;
+    line-height: 100%;
+    margin: 0 1rem 1rem 1rem;
+
+    color: #EB4F4F;
+}
+
+@media (min-width: 768px) {
+    .slat {
+        flex-direction: row;
+    }
+
+    .slat .icon {
+        font-size: 14rem;
+        // color: #f5f5f5;
+    }
+
+    .slat .icon-dark {
+        color: rgba(29,29,29,0.4);
+    }
+
+    .slat .icon-right {
+        order: 2;
+    }
+
+    .slat.welcome {
+        text-align: left;
+    }
+
+    .welcome .icon {
+        font-size: 11rem;
+    }
+}
+
 .intro {
     // background-color: rgba(58,164,151, 0.7);//#439fe0; //#ff8686;//#3aa497;
-    background-color: rgba(30,30,30, 0.7);//#439fe0; //#ff8686;//#3aa497;
+    background-color: rgba(0,0,0, 0.95);//#439fe0; //#ff8686;//#3aa497;
     color: rgba(235,235,235,1);
     text-align: center;
 
@@ -311,11 +366,12 @@ section img {
 
 .welcome {
     color: rgba(35,35,35, 1);
-    background-color: rgba(255,248,245, 0.7);
+    // background-color: rgba(255,248,245, 0.7);
+
 
     &::after {
         content: "";
-        background-image: url(/img/dan.jpg);
+        // background-image: url(/img/dan.jpg);
         background-size: cover;
         background-position: center;
         opacity: 1;
