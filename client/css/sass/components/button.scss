@@ -1,0 +1,16 @@
+.Button {
+    border: none;
+    background: inherit;
+    color: inherit;
+    // Override greedy browser default
+    font-size: 1em;
+    // Override greedy browser default
+    font-family: inherit;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.Button-icon {
+    float: left;
+    padding: 5px;
+}
