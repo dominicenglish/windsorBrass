@@ -3,6 +3,10 @@
     "version": "0.0.0",
     "dependencies": {
         "angular-scroll": "latest",
-        "angular-resource": "latest"
+        "angular-resource": "latest",
+        "angular-animate": "latest",
+        "angular-ui-router": "latest",
+        "angular-touch": "latest",
+        "angular-google-maps": "latest"
     }
 }
