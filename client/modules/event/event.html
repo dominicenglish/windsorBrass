@@ -1,0 +1,21 @@
+
+<section ng-controller="EventViewController" class="eventPage">
+  <button ui-sref="event.list" class="IconButton BackButton"><i class="fa fa-arrow-left fa-2x"></i></button>
+  <div class="Container">
+    <div class="Event">
+      <div class="Event-title">
+        <h1>{{event.summary}}</h1>
+      </div>
+      <div class="Event-details">
+        <div class="Event-details-row"><span class="title">When:</span><span class="detail">{{event.start.dateTime || event.start.date | date:dateFormat}}</span></div>
+        <div class="Event-details-row"><span class="title">Where:</span><span class="detail">{{event.location}}</span></div>
+      </div>
+      <div class="Event-map">
+        <google-map center="map.center" zoom="map.zoom" draggable="true" options="map.options">
+          <marker idkey="marker.id" coords="marker.coordinates"></marker>
+        </google-map>
+      </div>
+      <div class="Event-description"><pre>{{event.description}}</pre></div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,22 @@
+
+<section ng-controller="AgendaController" class="u-fullHeight">
+  <button ui-sref="home" class="IconButton BackButton"><i class="fa fa-arrow-left fa-2x"></i></button>
+  <div class="Container">
+    <h2>Upcoming Gigs</h2>
+    <div class="Agenda">
+      <div ng-repeat="event in events.items" ng-click="showEvent(event)" class="Agenda-event">
+        <div class="Agenda-date">
+          <div class="DateStacked">
+            <div class="DateStacked-day">{{event.start.dateTime || event.start.date | date:'EEE'}}</div>
+            <div class="DateStacked-date">{{event.start.dateTime || event.start.date | date:'dd'}}</div>
+            <div class="DateStacked-month">{{event.start.dateTime || event.start.date | date:'MMM'}}</div>
+          </div>
+        </div>
+        <div class="Agenda-info">
+          <div class="Agenda-title">{{event.summary}}</div>
+          <div class="Agenda-location">{{event.location.substr(0, event.location.indexOf(','))}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
