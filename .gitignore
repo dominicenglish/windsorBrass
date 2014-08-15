@@ -4,3 +4,4 @@ client/img
 client/css/*.css*
 .sass-cache/
 *sublime*
+server/config.js
