@@ -1,4 +1,53 @@
-angular.module('windsor', ['duScroll', 'ngResource'])
+angular.module('windsor', ['duScroll', 'ngResource', 'ngAnimate', 'ui.router', 'ngTouch', 'windsor.event', 'google-maps', 'windsor.geocode', 'windsor.about', 'windsor.contact']);
+angular.module('windsor.event', []);
+angular.module('windsor.geocode', []);
+angular.module('windsor.about', []);
+angular.module('windsor.contact', []);
+
+
+angular.module('windsor')
+.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
+
+    // Set HTML5 mode
+    $locationProvider
+        .html5Mode(true)
+        .hashPrefix("!");
+
+    // For any unmatched url, rediret to index
+    $urlRouterProvider.otherwise("/");
+
+    // Set up states
+    $stateProvider
+        .state('home', {
+            url: '/',
+            templateUrl: '/modules/home/home.html'
+        })
+        .state('about', {
+            url: '/about',
+            templateUrl: '/modules/about/about.html'
+        })
+        .state('event', {
+            abstract: true,
+            url: '/events',
+            template: '<div ui-view class="u-fullHeight" ng-class="animationClass"></div>',
+            controller: 'EventController'
+        })
+        .state('event.list', {
+            url: '',
+            templateUrl: '/modules/event/agenda.html'
+        })
+        .state('event.view', {
+            url: '/:id',
+            templateUrl: '/modules/event/event.html'
+        })
+        .state('contact', {
+            url: '/contact',
+            templateUrl: '/modules/contact/contact.html'
+        })
+    ;
+}])
+
+.constant('GoogleApiKey', 'AIzaSyCA_lBJD_eqsxjQ22fFHkGu8zTW8xTu3Fc')
 
 .factory('ViewportService', [function() {
     var currentViewportHeight;
@@ -12,29 +61,8 @@ angular.module('windsor', ['duScroll', 'ngResource'])
     };
 }])
 
-.factory('EventResource', ['$resource', function($resource) {
-    var calendarId = 'ausbrass.com_7ff0icqnt45drrqqtun4eojl08@group.calendar.google.com';
-    var apiKey = 'AIzaSyCA_lBJD_eqsxjQ22fFHkGu8zTW8xTu3Fc';
-    var occursAfter = new Date();
-    return $resource(
-        'https://www.googleapis.com/calendar/v3/calendars/:calendarId/events',
-        {
-            calendarId: calendarId,
-            key: apiKey,
-            timeMin: occursAfter.toISOString()
-        }
-    );
-}])
+.controller('MainController', ['$scope', function($scope) {
 
-.controller('MainController', ['$scope', 'EventResource', function($scope, EventResource) {
-    $scope.getEvents = function() {
-        EventResource.get()
-        .$promise.then(function(events) {
-            $scope.events = events;
-            console.log($scope.events);
-        });
-    };
-    $scope.getEvents();
 }])
 
 .directive('fullHeight', ['$window', 'ViewportService', function($window, ViewportService) {
