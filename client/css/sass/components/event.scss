@@ -1,0 +1,50 @@
+.Event {
+
+}
+
+.Event-title {
+    // Help prevent ugly reflow when content loads
+    min-height: 2.1em;
+}
+
+// .Event-title .DateStacked {
+//     display: inline-block;
+//     vertical-align: middle;
+// }
+
+.Event-title h1 {
+    // display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+}
+
+.Event-details {
+    margin: 1em 0 1em 0;
+    // Help prevent ugly reflow when content loads
+    min-height: 5.7em;
+}
+
+.Event-details-row {
+    padding-top: 1em;
+}
+
+.Event-details-row span {
+    display: table-cell;
+}
+
+.Event-details-row .title {
+    width: 4em;
+}
+
+.Event-details-row .detail {
+    font-size: 0.8em;
+}
+
+.Event-description pre {
+    font-family: inherit;
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
