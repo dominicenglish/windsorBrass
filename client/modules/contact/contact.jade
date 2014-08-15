@@ -1,0 +1,26 @@
+section.u-fullHeight(ng-controller="ContactController")
+    button.IconButton.BackButton(ui-sref="home")
+        i.fa.fa-arrow-left.fa-2x
+    .Container
+        h1 Contact Us
+
+        p Both Windsor Brass and our sister band Brisbane Excelsior are available for functions.
+
+        p We have entertained generations of Australians through concerts, parades, park performances, opening events, ceremonial marches, vice-regal occasions and corporate bookings.
+
+        p The bands repertoire is extremely diverse. We perform classical, light classical, musical comedy, traditional swing, contemporary and sacred music. We are also available for marching performances.
+
+        p Feel free to contact us below to discuss your needs.
+
+        form.Form
+            .Form-field
+                label(for="form-name") Name
+                input#form-name(type="text" placeholder="Name..." ng-model="sender.name")
+            .Form-field
+                label(for="form-email") Return Email
+                input#form-email(type="email" placeholder="Return Email..." ng-model="sender.email")
+            .Form-field
+                label.message(for="form-message") Message
+                textarea#form-message(placeholder="Message..." ng-model="sender.message" required)
+            .Form-field
+                button.Button.Form-block(ng-click="sendMessage()") Send
