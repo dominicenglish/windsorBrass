@@ -14,9 +14,9 @@ module.exports = function(grunt) {
         },
         nodemon: {
             default: {
-                script: 'index.js',
+                script: 'server/index.js',
                 options: {
-                    watch: ['index.js', 'server/**'],
+                    watch: ['server/**'],
                     cwd: __dirname
                 }
             }
@@ -32,12 +32,33 @@ module.exports = function(grunt) {
                 }
             }
         },
+        jade: {
+            default: {
+                options: {
+                    pretty: true
+                },
+                files: [{
+                    cwd: "client/modules",
+                    src: "**/*.jade",
+                    dest: "client/modules",
+                    expand: true,
+                    ext: ".html"
+                }]
+            }
+        },
         watch: {
             jade: {
                 files: ['server/views/**/*.jade'],
                 options: {
                     livereload: true
-                },
+                }
+            },
+            clientJade: {
+                files: ['client/modules/**/*.jade'],
+                tasks: ['jade'],
+                options: {
+                    livereload: true
+                }
             },
             js: {
                 files: ['index.js', 'client/js/**', 'server/**/*.js'],
@@ -64,8 +85,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-nodemon');
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-jade');
 
     grunt.option('force', true);
 
     grunt.registerTask('default', ['jshint', 'concurrent:default']);
+    grunt.registerTask('partials', ['jade']);
 };
