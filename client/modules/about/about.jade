@@ -1,0 +1,17 @@
+section.u-fullHeight(ng-controller="AboutController")
+    button.IconButton.BackButton(ui-sref="home")
+        i.fa.fa-arrow-left.fa-2x
+    .Container
+        h1 About Us
+        p Windsor Brass was formed in 2002 and began competing in the D Grade event of the 2003 Queensland State Championships and was regraded to C Grade mid-2004 only to be regraded again to B Grade later that year due to the quality of its contesting performances. In 2010, Windsor won its first B Grade State Championships. It has has repeated this performance twice more since then, becoming B Grade Champions in both 2011 and 2013.
+        p The younger sibling of Brisbane Excelsior Band, Windsor Brass is a champion B Grade brass band with a strong focus on entertainment and fun winning Most Entertaining Band at the 2009 Nambour Festival of Brass.
+        p With a commitment to excellence, the band welcomes players of all ages.
+        p Active players span from high school students to retirees.
+
+        h1 Rehearsal Venue
+        p Windsor Brass rehearses at the following address on Wednesday nights.
+        p
+            b Windsor School of Arts, 409 Lutwyche Road, Windsor
+
+        google-map(center="map.center" zoom="map.zoom" draggable="true" options="map.options")
+            marker(idkey="marker.id" coords="marker.coordinates")
