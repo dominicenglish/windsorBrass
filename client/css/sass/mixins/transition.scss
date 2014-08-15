@@ -1,0 +1,6 @@
+@mixin transition($transitionProperty:'all', $transitionDuration:'0s', $transitionTimingFunction:'ease', $transitionDelay:"0s") {
+    -webkit-transition:unquote($transitionProperty) unquote($transitionTimingFunction) unquote($transitionDuration) unquote($transitionDelay);
+    -moz-transition:unquote($transitionProperty) unquote($transitionTimingFunction) unquote($transitionDuration) unquote($transitionDelay);
+    -o-transition:unquote($transitionProperty) unquote($transitionTimingFunction) unquote($transitionDuration) unquote($transitionDelay);
+    transition:unquote($transitionProperty) unquote($transitionTimingFunction) unquote($transitionDuration) unquote($transitionDelay);
+}
