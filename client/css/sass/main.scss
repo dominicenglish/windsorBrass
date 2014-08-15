@@ -1,6 +1,15 @@
+@import 'components/container';
 @import 'components/agenda';
 @import 'components/date-stacked';
 @import 'components/slat';
+@import 'components/animations';
+@import 'components/icon-button';
+@import 'components/event';
+@import 'components/utilities';
+@import 'components/back-button';
+@import 'components/navigation';
+@import 'components/button';
+@import 'components/form';
 
 $slightly-transparent-black: rgba(40, 40, 40, 0.98);
 
@@ -12,7 +21,7 @@ $slightly-transparent-black: rgba(40, 40, 40, 0.98);
 
 body {
     margin: 0;
-    font-family: "Helvetica Neue", Helvetica, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneve, Verdana, sans-serif;
+    font-family: Roboto, "Helvetica Neue", Helvetica, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneve, Verdana, sans-serif;
     letter-spacing: -0.02em;
     font-weight: 400;
     font-style: normal;
@@ -21,16 +30,18 @@ body {
     line-height: 1.4;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    // Prevent horizontal scrollbar when animating between pages
+    overflow-x: hidden;
 }
 
-html, body, .container {
+html, body, {
     height: 100%;
     font-size: 18px;
 }
 
 @media (min-width: 768px) {
     html, body, .container {
-        font-size: 30px;
+        font-size: 24px;
     }
 }
 
@@ -234,15 +245,35 @@ $banner-arrow-width: 16px;
     width: auto;
 }
 
+.Navigation {
+    font-size: 0.8em;
+}
+
+.facebook:hover {
+    background: rgba(60, 60, 200, 0.98);
+}
+
+.Container {
+    margin-top: 2em;
+}
+
+.Container h1:first-of-type {
+    margin-top: 0;
+}
+
 section .container {
-    padding: 0rem 0.5rem;
+    // padding: 0rem 0.5rem;
     // display: table;
+}
+
+body > section {
+    overflow-x: hidden;
 }
 
 section p {
     // display: table-cell;
     // vertical-align: middle;
-    text-align: center;
+    // text-align: center;
 }
 
 section img {
@@ -384,53 +415,98 @@ section img {
     }
 }
 
-form .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 1em;
-}
+// form .row {
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: flex-start;
+//     align-items: center;
+//     margin-bottom: 1em;
+// }
 
-label {
-    width: 8rem;
-    text-align: left;
-    display: none;
-}
+// label {
+//     width: 8rem;
+//     text-align: left;
+//     display: none;
+// }
 
-label.message {
-    align-self: flex-start;
-}
+// label.message {
+//     align-self: flex-start;
+// }
 
-input {
-    font-size: 1em;
-    font-size: 1rem;
-}
+// input {
+//     font-size: 1em;
+//     font-size: 1rem;
+// }
 
-input[type=text], textarea {
-    border: solid 1px #fff;
-    border-radius: 5px;
-    padding: 0.5rem;
-    width: 20rem;
-    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
-}
+// input[type=text], textarea {
+//     border: solid 1px #fff;
+//     border-radius: 5px;
+//     padding: 0.5rem;
+//     width: 20rem;
+//     box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
+// }
 
-input[type=text] {
-}
+// input[type=text] {
+// }
 
-textarea {
-    height: 10rem;
-    font-size: 0.8rem;
-}
+// textarea {
+//     height: 10rem;
+//     font-size: 0.8rem;
+// }
 
+// @media (min-width: 768px) {
+//     textarea {
+//         height: 15rem;
+//     }
+// }
+
+.Agenda {
+    // width: 15rem;
+    // margin: auto;
+    margin-left: 1em;
+    // box-shadow: 1px 1px 2px #eee;
+}
 @media (min-width: 768px) {
-    textarea {
-        height: 15rem;
+    .Agenda {
+        width: 728px;
+        margin: auto;
+    }
+    .Agenda-event {
+
+        border: none;
+        padding: 0.5em 0 0 0;
     }
 }
 
-.Agenda {
-    width: 15rem;
-    margin: auto;
-    // box-shadow: 1px 1px 2px #eee;
+.eventPage {
+    position: relative;
+    background-color: rgb(220, 80, 80);
+    color: #edd;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.Event {
+    margin: 0 1em 0 1em;
+}
+.Event .Event-title {
+    margin: 55px 0em 0 0em;
+}
+.angular-google-map-container {
+    height: 300px;
+}
+@media (min-width: 768px) {
+    .eventPage {
+        position: static;
+    }
+    .eventPage h1 {
+        font-size: 1.5em;
+    }
+    .Event .Event-title {
+        margin-left: 0;
+        margin-top: 0;
+    }
+    .angular-google-map-container {
+        height: 400px;
+    }
 }
