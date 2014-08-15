@@ -1,0 +1,12 @@
+.BackButton {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    color: inherit;
+}
+
+@media (min-width: 768px) {
+    .BackButton {
+        top: 10px;
+    }
+}
