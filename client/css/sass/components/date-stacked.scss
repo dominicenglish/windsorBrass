@@ -1,11 +1,8 @@
-$DateStacked-font-size: 1em !default;
-
 .DateStacked {
     display: block;
     text-align: center;
     text-transform: uppercase;
     line-height: 0.9;
-    font-size: $DateStacked-font-size;
 }
 
 .DateStacked-date {
@@ -22,11 +19,4 @@ $DateStacked-font-size: 1em !default;
 .DateStacked-day {
     font-size: 0.7em;
     letter-spacing: 0.15em;
-}
-
-/**
- * RUBBISH
- */
-.DateStacked {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
