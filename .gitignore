@@ -2,6 +2,7 @@ node_modules/
 client/lib
 client/img
 client/css/*.css*
+client/modules/**/*.html
 .sass-cache/
 *sublime*
 server/config.js
