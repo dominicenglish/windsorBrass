@@ -32,10 +32,6 @@ angular.module('windsor.event')
         if (activeEvent && activeEvent.id === id) {
             deferred.resolve(activeEvent);
         }
-        // setTimeout(function(){
-        //     deferred.resolve('woosh');
-        //     console.log('woosh');
-        // }, 1000);
         getFutureEvents()
             .then(function(events) {
                 angular.forEach(events.items, function(event) {
