@@ -1,5 +1,5 @@
-@import 'mixins/transform';
-@import 'mixins/transition';
+@import '../mixins/transform';
+@import '../mixins/transition';
 
 .slide-from-right.ng-enter, .slide-from-right.ng-leave {
     @include transition(all, 500ms, cubic-bezier(0.4, 0, 0.2, 1));
