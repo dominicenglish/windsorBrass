@@ -61,8 +61,8 @@ angular.module('windsor')
     };
 }])
 
-.controller('MainController', ['$scope', function($scope) {
-
+.controller('MainController', ['$scope', 'Event', function($scope, Event) {
+    Event.getEvents();
 }])
 
 .directive('fullHeight', ['$window', 'ViewportService', function($window, ViewportService) {
