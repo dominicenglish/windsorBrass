@@ -3,7 +3,7 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         concurrent: {
             default: {
-                tasks: ['nodemon:default', 'watch'],
+                tasks: ['watch', 'nodemon'],
                 options: {
                     logConcurrentOutput: true
                 }
@@ -16,7 +16,7 @@ module.exports = function(grunt) {
             default: {
                 script: 'server/index.js',
                 options: {
-                    watch: ['server/**'],
+                    watch: ['server'],
                     cwd: __dirname
                 }
             }
@@ -24,7 +24,8 @@ module.exports = function(grunt) {
         sass: {
             default: {
                 options: {
-                    style: 'compressed'
+                    style: 'compressed',
+                    loadPath: 'client/css/sass'
                 },
                 files: {
                     'client/css/main.css': 'client/css/sass/main.scss'
@@ -83,7 +84,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-nodemon');
     grunt.loadNpmTasks('grunt-concurrent');
-    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-contrib-jade');
 
     grunt.option('force', true);
