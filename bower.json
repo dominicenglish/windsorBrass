@@ -1,12 +1,13 @@
 {
-    "name": "windsor-brass",
-    "version": "0.0.0",
-    "dependencies": {
-        "angular-scroll": "latest",
-        "angular-resource": "latest",
-        "angular-animate": "latest",
-        "angular-ui-router": "latest",
-        "angular-touch": "latest",
-        "angular-google-maps": "latest"
-    }
+  "name": "windsor-brass",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular-scroll": "latest",
+    "angular-resource": "latest",
+    "angular-animate": "latest",
+    "angular-ui-router": "latest",
+    "angular-touch": "latest",
+    "angular-google-maps": "latest",
+    "angular-messages": "~1.3.0-build.3108+sha.42f2875"
+  }
 }

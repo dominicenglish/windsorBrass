@@ -1,4 +1,4 @@
-angular.module('windsor', ['duScroll', 'ngResource', 'ngAnimate', 'ui.router', 'ngTouch', 'windsor.event', 'google-maps', 'windsor.geocode', 'windsor.about', 'windsor.contact']);
+angular.module('windsor', ['duScroll', 'ngResource', 'ngAnimate', 'ui.router', 'ngTouch', 'windsor.event', 'google-maps', 'windsor.geocode', 'windsor.about', 'windsor.contact', 'ngMessages']);
 angular.module('windsor.event', []);
 angular.module('windsor.geocode', []);
 angular.module('windsor.about', []);
