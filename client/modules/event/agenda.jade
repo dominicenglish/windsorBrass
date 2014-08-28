@@ -2,14 +2,27 @@ section.u-fullHeight(ng-controller="AgendaController")
     button.IconButton.BackButton(ui-sref="home")
         i.fa.fa-arrow-left.fa-2x
     .Container
-        h2 Upcoming Gigs
-        .Agenda
-            .Agenda-event(ng-repeat="event in events.items" ng-click="showEvent(event)")
-                .Agenda-date
-                    .DateStacked
-                        .DateStacked-day {{event.start.dateTime || event.start.date | date:'EEE'}}
-                        .DateStacked-date {{event.start.dateTime || event.start.date | date:'dd'}}
-                        .DateStacked-month {{event.start.dateTime || event.start.date | date:'MMM'}}
-                .Agenda-info
-                    .Agenda-title {{event.summary}}
-                    .Agenda-location {{event.location.substr(0, event.location.indexOf(','))}}
+        .Slat
+            h2 Upcoming Gigs
+            .Agenda
+                .Agenda-event(ng-repeat="event in events.items|filter:{visibility:'!private'}" ng-click="showEvent(event)")
+                    .Agenda-date
+                        .DateStacked
+                            .DateStacked-day {{event.start.dateTime || event.start.date | date:'EEE'}}
+                            .DateStacked-date {{event.start.dateTime || event.start.date | date:'dd'}}
+                            .DateStacked-month {{event.start.dateTime || event.start.date | date:'MMM'}}
+                    .Agenda-info
+                        .Agenda-title {{event.summary}}
+                        .Agenda-location {{event.location.substr(0, event.location.indexOf(','))}}
+                    .Agenda-arrow
+                        i.fa.fa-chevron-right
+        .Slat
+            h2 Sign up for email reminders
+            form.Form(name="subscriptionForm")
+                div(ng-messages="subscriptionForm.$error")
+                    p.ng-valid(ng-message="serverSuccess") Congratulations, you are now subscribed to our mailing list.
+                    p.ng-invalid(ng-message="serverError") An error has occurred and your subscription was not saved. Please try again.
+                    p.ng-invalid(ng-message="alreadySubscribed") It looks like you're already subscribed!
+                .Form-field--inline
+                    input(name="email" type="email" ng-model="user.email" placeholder="Email address...")
+                    button.Button.Button--inline(ng-click="subscribe()") Sign Up

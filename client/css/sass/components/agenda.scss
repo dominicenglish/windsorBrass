@@ -38,6 +38,19 @@
     vertical-align: middle;
 }
 
+.Agenda-arrow {
+    display: table-cell;
+    vertical-align: middle;
+    width: 1em;
+    text-align: right;
+    opacity: 0.6;
+}
+
+.Agenda-arrow:hover {
+    opacity: 1;
+    color: inherit;
+}
+
 .Agenda-location {
     font-size: 0.7em;
 }
