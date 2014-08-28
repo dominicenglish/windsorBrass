@@ -1,25 +1,27 @@
 {
-    "name": "windsor-brass",
-    "version": "0.0.0",
-    "description": "Website for Windsor Brass",
-    "main": "index.js",
-    "author": "Dominic English",
-    "dependencies": {
-        "express": "latest",
-        "jade": "latest",
-        "bower": "latest",
-        "grunt": "latest",
-        "grunt-cli": "latest",
-        "view-helpers": "latest",
-        "nodemailer": "latest",
-        "body-parser": "latest"
-    },
-    "devDependencies": {
-        "grunt-contrib-watch": "latest",
-        "grunt-contrib-jshint": "latest",
-        "grunt-nodemon": "latest",
-        "grunt-concurrent": "latest",
-        "grunt-contrib-sass": "latest",
-        "grunt-contrib-jade": "latest"
-    }
+  "name": "windsor-brass",
+  "version": "0.0.0",
+  "description": "Website for Windsor Brass",
+  "main": "index.js",
+  "author": "Dominic English",
+  "dependencies": {
+    "body-parser": "latest",
+    "bower": "latest",
+    "express": "latest",
+    "grunt": "latest",
+    "grunt-cli": "latest",
+    "jade": "latest",
+    "nodemailer": "latest",
+    "request": "^2.40.0",
+    "view-helpers": "latest"
+  },
+  "devDependencies": {
+    "grunt-concurrent": "latest",
+    "grunt-contrib-jade": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-contrib-sass": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-node-inspector": "^0.1.5",
+    "grunt-nodemon": "latest"
+  }
 }

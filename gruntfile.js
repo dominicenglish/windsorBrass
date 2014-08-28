@@ -7,6 +7,12 @@ module.exports = function(grunt) {
                 options: {
                     logConcurrentOutput: true
                 }
+            },
+            debug: {
+                tasks: ['watch', 'nodemon:debug', 'node-inspector'],
+                options: {
+                    logConcurrentOutput: true
+                }
             }
         },
         jshint: {
@@ -18,6 +24,14 @@ module.exports = function(grunt) {
                 options: {
                     watch: ['server'],
                     cwd: __dirname
+                }
+            },
+            debug: {
+                script: 'server/index.js',
+                options: {
+                    watch: ['server'],
+                    cwd: __dirname,
+                    nodeArgs: ['--debug']
                 }
             }
         },
@@ -44,6 +58,15 @@ module.exports = function(grunt) {
                     expand: true,
                     ext: ".html"
                 }]
+            }
+        },
+        'node-inspector': {
+            default: {
+                options: {
+                    'web-port': 8080,
+                    'web-host': 'localhost',
+                    'debug-port': 5858
+                }
             }
         },
         watch: {
@@ -86,9 +109,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-contrib-jade');
+    grunt.loadNpmTasks('grunt-node-inspector');
 
     grunt.option('force', true);
 
     grunt.registerTask('default', ['jshint', 'concurrent:default']);
+    grunt.registerTask('debug', ['jshint', 'concurrent:debug']);
     grunt.registerTask('partials', ['jade']);
 };
