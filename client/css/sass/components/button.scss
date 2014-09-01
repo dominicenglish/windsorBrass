@@ -7,7 +7,11 @@
     // Override greedy browser default
     font-family: inherit;
     cursor: pointer;
-    padding: 5px;
+    padding: 0.5em;
+}
+
+.Button--fullWidth {
+    width: 100%;
 }
 
 .Button-icon {
