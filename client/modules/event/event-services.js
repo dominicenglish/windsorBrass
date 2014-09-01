@@ -8,7 +8,25 @@ angular.module('windsor.event')
         {
             calendarId: calendarId,
             key: GoogleApiKey,
-            timeMin: occursAfter.toISOString()
+            timeMin: occursAfter.toISOString(),
+            singleEvents: true,
+            orderBy: 'startTime'
+        }
+    );
+}])
+
+.factory('NewsletterResource', ['$resource', function($resource) {
+    return $resource(
+        '/api/newsletter/:action',
+        {},
+        {
+            subscribe: {
+                method: 'POST',
+                params: {
+                    action: 'subscribe',
+                    email: ''
+                }
+            }
         }
     );
 }])

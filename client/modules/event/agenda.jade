@@ -18,11 +18,13 @@ section.u-fullHeight(ng-controller="AgendaController")
                         i.fa.fa-chevron-right
         .Slat
             h2 Sign up for email reminders
-            form.Form(name="subscriptionForm")
-                div(ng-messages="subscriptionForm.$error")
-                    p.ng-valid(ng-message="serverSuccess") Congratulations, you are now subscribed to our mailing list.
-                    p.ng-invalid(ng-message="serverError") An error has occurred and your subscription was not saved. Please try again.
-                    p.ng-invalid(ng-message="alreadySubscribed") It looks like you're already subscribed!
-                .Form-field--inline
-                    input(name="email" type="email" ng-model="user.email" placeholder="Email address...")
-                    button.Button.Button--inline(ng-click="subscribe()") Sign Up
+            form.Form(name="subscriptionForm" novalidate)
+                div(ng-messages="subscriptionForm.displayErrors")
+                    p.invalid(ng-message="required") You must enter an email address to subscribe.
+                    p.invalid(ng-message="email") You must enter a valid email to subscribe.
+                    p.invalid(ng-message="serverError") An error has occurred and your subscription was not saved. Please try again.
+                    p.invalid(ng-message="alreadySubscribed") It looks like you're already subscribed!
+                    p.valid(ng-message="serverSuccess") Congratulations, you are now subscribed to our mailing list.
+                    .Form-field--inline
+                        input(name="email" type="email" ng-model="user.email" placeholder="Email address..." required)
+                        button.Button.Button--inline(ng-click="subscribe()") Sign Up

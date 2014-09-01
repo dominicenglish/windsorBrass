@@ -29,13 +29,38 @@ angular.module('windsor.event')
     });
 }])
 
-.controller('AgendaController', ['$scope', '$state', 'Event', function($scope, $state, Event) {
+.controller('AgendaController', ['$scope', '$state', 'Event', 'NewsletterResource', function($scope, $state, Event, NewsletterResource) {
+    $scope.user = {};
+    $scope.subscriptionForm = {displayErrors: {}};
+
     Event.getEvents().then(function(events) {
         $scope.events = events;
     });
 
     $scope.showEvent = function(event) {
         $state.go('event.view', {'id': event.id});
+    }
+
+    $scope.subscribe = function() {
+        $scope.subscriptionForm.displayErrors = $scope.subscriptionForm.$error;
+        if ($scope.subscriptionForm.$invalid) {
+            return
+        }
+        // Wipe any form errors
+        $scope.subscriptionForm.displayErrors = {};
+        NewsletterResource.subscribe({email: $scope.user.email}).$promise
+            .then(function() {
+                $scope.subscriptionForm.displayErrors.serverSuccess = true;
+                $scope.user.email = '';
+            })
+            .catch(function(error) {
+                if (error.data.code) {
+                    if (error.data.code === 214) {
+                        return $scope.subscriptionForm.displayErrors.alreadySubscribed = true;
+                    }
+                }
+                $scope.subscriptionForm.displayErrors.serverError = true;
+            });
     }
 }])
 
