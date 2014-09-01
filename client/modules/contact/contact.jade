@@ -12,15 +12,21 @@ section.u-fullHeight(ng-controller="ContactController")
 
         p Feel free to contact us below to discuss your needs.
 
-        form.Form
-            .Form-field
-                label(for="form-name") Name
-                input#form-name(type="text" placeholder="Name..." ng-model="sender.name")
-            .Form-field
-                label(for="form-email") Return Email
-                input#form-email(type="email" placeholder="Return Email..." ng-model="sender.email")
-            .Form-field
-                label.message(for="form-message") Message
-                textarea#form-message(placeholder="Message..." ng-model="sender.message" required)
-            .Form-field
-                button.Button.Form-block(ng-click="sendMessage()") Send
+        form.Form(name="contactForm" novalidate)
+            div(ng-messages="contactForm.displayErrors")
+
+                p.invalid(ng-message="serverError") An error has occurred and your message was not sent. Please try again.
+                p.valid(ng-message="serverSuccess") Congratulations, your message has been sent.
+                .Form-field
+                    label(for="form-name") Name
+                    input#form-name(type="text" placeholder="Name..." ng-model="sender.name")
+                p.invalid(ng-message="email") You must enter a valid email address or leave the field blank.
+                .Form-field
+                    label(for="form-email") Return Email
+                    input#form-email(type="email" placeholder="Return Email..." ng-model="sender.email")
+                p.invalid(ng-message="required") You must enter a message.
+                .Form-field
+                    label.message(for="form-message") Message
+                    textarea#form-message(placeholder="Message..." ng-model="sender.message" required)
+                .Form-field
+                    button.Button.Form-block(ng-click="sendMessage()") Send
