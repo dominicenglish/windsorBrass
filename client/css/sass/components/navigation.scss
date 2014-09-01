@@ -3,12 +3,17 @@ $navigationHeight: 50px;
 .Navigation {
     position: absolute;
     display: table;
-    bottom: 0;
+    top: 0;
     width: 100%;
     height: $navigationHeight;
     background: rgba(40, 40, 40, 0.98);
     color: #fefefe;
     z-index: 700;
+}
+
+.Navigation--bottom {
+    top: auto;
+    bottom: 0;
 }
 
 .Navigation-item {
@@ -35,5 +40,30 @@ $navigationHeight: 50px;
 .Navigation-button {
     height: 100%;
     width: 100%;
+}
+
+.Navigation-logo {
+    display: table-cell;
+    text-align: center;
+}
+
+.Navigation-logo {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    height: 95px;
+}
+
+.Navigation-logo img {
+    height: 56px;
+}
+
+@media (min-width: 768px) {
+    .Navigation-logo {
+        height: 125px;
+    }
+    .Navigation-logo img{
+        height: 75px;
+    }
 }
 

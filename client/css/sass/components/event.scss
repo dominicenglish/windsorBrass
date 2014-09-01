@@ -34,6 +34,10 @@
     font-size: 0.8em;
 }
 
+.Event-map {
+    height: 300px;
+}
+
 .Event-description pre {
     font-family: inherit;
     white-space: pre-wrap;       /* css-3 */
@@ -41,4 +45,10 @@
     white-space: -pre-wrap;      /* Opera 4-6 */
     white-space: -o-pre-wrap;    /* Opera 7 */
     word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+@media (min-width: 768px) {
+    .Event-map {
+        height: 400px;
+    }
 }

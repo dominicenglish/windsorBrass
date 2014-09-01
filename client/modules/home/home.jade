@@ -1,12 +1,11 @@
-nav.site-nav
-    a.site-nav-logo
-        img(src="/img/windsor_logo.png")
-    //- button.hamburger.navbar-toggle(type="button" ng-click="mobileNav.toggle()")
-    //-     span.hamburger-bar
-    //-     span.hamburger-bar
-    //-     span.hamburger-bar
-//- .container
+//- nav.site-nav
+//-     a.site-nav-logo
+//-         img(src="/img/windsor_logo.png")
 .Navigation
+    a.Navigation-logo
+        img(src="/img/windsor_logo.png")
+
+nav.Navigation.Navigation--bottom
     //- .Navigation-item
     a.Navigation-item(ui-sref="about") ABOUT
     //- .Navigation-item
@@ -17,9 +16,9 @@ nav.site-nav
     a.Navigation-item.facebook(href="https://www.facebook.com/windsorbrass" target="_blank")
         i.fa.fa-facebook
 
-.surface(full-height)
-    .background-size-full
-        .banner-image
+//- .surface(full-height)
+//- .background-size-full
+.u-fullScreen.home-background
         //- a.banner-arrow-wrapper(scroll-to-next-scroll-point)
         //-     span.banner-arrow
 

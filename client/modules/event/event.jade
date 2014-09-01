@@ -1,13 +1,9 @@
-section.eventPage(ng-controller="EventViewController")
+section.event-page(ng-controller="EventViewController")
     button.IconButton.BackButton(ui-sref="event.list")
         i.fa.fa-arrow-left.fa-2x
     .Container
         .Event
             .Event-title
-                //- .DateStacked
-                //-     .DateStacked-day {{event.start.dateTime || event.start.date | date:'EEE'}}
-                //-     .DateStacked-date {{event.start.dateTime || event.start.date | date:'dd'}}
-                //-     .DateStacked-month {{event.start.dateTime || event.start.date | date:'MMM'}}
                 h1 {{event.summary}}
             .Event-details
                 .Event-details-row
@@ -21,27 +17,3 @@ section.eventPage(ng-controller="EventViewController")
                     marker(idkey="marker.id" coords="marker.coordinates")
             .Event-description
                 <pre>{{event.description}}</pre>
-
-
-    //- <paper-icon-button id="back-button" icon="arrow-back" on-tap="{{showAgenda}}"></paper-icon-button>
-    //- <div horizontal layout>
-    //-     <de-date-stacked date="{{event.start.dateTime || event.start.date}}"></de-date-stacked>
-    //-     <h1>{{event.summary}}</h1>
-    //- </div>
-    //- <div horizontal layout>
-    //-     <h2>When:</h2>
-    //-     <div>{{when}}</div>
-    //- </div>
-    //- <div horizontal layout>
-    //-     <h2>Where:</h2>
-    //-     <div>{{location}}</div>
-    //- </div>
-    //- <div id="map" cross-fade-delayed on-core-animated-pages-transition-end="{{loadMap()}}">
-    //-     <google-map-search map="{{map}}" query="{{event.location}}" result="{{mapCoordinates}}"></google-map-search>
-    //-     <google-map fit map="{{map}}" latitude="{{initialMapCoordinates.latitude}}" longitude="{{initialMapCoordinates.longitude}}" zoom="15" disableDefaultUI>
-    //-         <google-map-marker latitude="{{mapCoordinates.latitude}}" longitude="{{mapCoordinates.longitude}}"></google-map-marker>
-    //-     </google-map>
-    //- </div>
-    //- <div id="description">
-    //-     {{event.description}}
-    //- </div>
