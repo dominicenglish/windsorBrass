@@ -8,6 +8,7 @@
     "angular-ui-router": "latest",
     "angular-touch": "latest",
     "angular-google-maps": "latest",
-    "angular-messages": "~1.3.0-build.3108+sha.42f2875"
+    "angular-messages": "~1.3.0-build.3108+sha.42f2875",
+    "angular-mocks": "~1.2.25"
   }
 }
