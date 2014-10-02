@@ -1,9 +1,4 @@
-angular.module('windsor', ['duScroll', 'ngResource', 'ngAnimate', 'ui.router', 'ngTouch', 'windsor.event', 'google-maps', 'windsor.geocode', 'windsor.about', 'windsor.contact', 'ngMessages']);
-angular.module('windsor.event', []);
-angular.module('windsor.geocode', []);
-angular.module('windsor.about', []);
-angular.module('windsor.contact', []);
-
+angular.module('windsor', ['duScroll', 'ngResource', 'ngAnimate', 'ui.router', 'ngTouch', 'windsor.event', 'google-maps', 'windsor.config', 'windsor.geocode', 'windsor.about', 'windsor.contact', 'ngMessages']);
 
 angular.module('windsor')
 .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -46,8 +41,6 @@ angular.module('windsor')
         })
     ;
 }])
-
-.constant('GoogleApiKey', 'AIzaSyCA_lBJD_eqsxjQ22fFHkGu8zTW8xTu3Fc')
 
 .factory('ViewportService', [function() {
     var currentViewportHeight;
@@ -97,8 +90,6 @@ angular.module('windsor')
         }
     };
 }])
-
-
 
 .factory('ScrollPointService', [function() {
     var scrollPoints = {};
