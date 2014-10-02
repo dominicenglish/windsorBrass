@@ -3,7 +3,7 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         concurrent: {
             default: {
-                tasks: ['watch', 'nodemon'],
+                tasks: ['watch', 'nodemon', 'karma:unit:start'],
                 options: {
                     logConcurrentOutput: true
                 }
@@ -69,6 +69,13 @@ module.exports = function(grunt) {
                 }
             }
         },
+        karma: {
+            unit: {
+                configFile: 'config/karma.conf.js',
+                background: false,
+                singleRun: false
+            }
+        },
         watch: {
             jade: {
                 files: ['server/views/**/*.jade'],
@@ -99,6 +106,10 @@ module.exports = function(grunt) {
             sass: {
                 files: ['client/css/sass/**/*.scss'],
                 tasks: ['sass']
+            },
+            karma: {
+                files: ['client/**/*.js', 'test/unit/**/*.js'],
+                tasks: ['karma:unit:run']
             }
         }
     });
@@ -110,6 +121,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-node-inspector');
+    grunt.loadNpmTasks('grunt-karma');
 
     grunt.option('force', true);
 
