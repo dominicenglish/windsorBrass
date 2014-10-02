@@ -1,12 +1,11 @@
 angular.module('windsor.event')
 
-.factory('EventResource', ['$resource', 'GoogleApiKey', function($resource, GoogleApiKey) {
-    var calendarId = 'ausbrass.com_7ff0icqnt45drrqqtun4eojl08@group.calendar.google.com';
+.factory('EventResource', ['$resource', 'GoogleApiKey', 'GoogleCalendarId', function($resource, GoogleApiKey, GoogleCalendarId) {
     var occursAfter = new Date();
     return $resource(
         'https://www.googleapis.com/calendar/v3/calendars/:calendarId/events',
         {
-            calendarId: calendarId,
+            calendarId: GoogleCalendarId,
             key: GoogleApiKey,
             timeMin: occursAfter.toISOString(),
             singleEvents: true,
