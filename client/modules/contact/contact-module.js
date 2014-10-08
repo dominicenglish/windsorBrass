@@ -1,1 +1,1 @@
-angular.module('windsor.contact', []);
+angular.module('windsor.contact', ['ngResource']);
