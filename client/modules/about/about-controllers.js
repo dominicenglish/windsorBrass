@@ -17,6 +17,6 @@ angular.module('windsor.about')
             latitude: -27.426871,
             longitude: 153.032517
         }
-    }
+    };
 }])
 ;
