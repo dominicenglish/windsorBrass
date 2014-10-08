@@ -1,6 +1,6 @@
 angular.module('windsor.event')
 
-.controller('EventController', ['$scope', '$state', '$rootScope', function($scope, $state, $rootScope) {
+.controller('EventController', ['$scope', '$rootScope', function($scope, $rootScope) {
     /**
      * Note that this event is only triggered for the ENTERING page. This means
      * that the EXITING page will keep the incorrect animation class from the
@@ -39,16 +39,16 @@ angular.module('windsor.event')
 
     $scope.showEvent = function(event) {
         $state.go('event.view', {'id': event.id});
-    }
+    };
 
     $scope.subscribe = function() {
         $scope.subscriptionForm.displayErrors = $scope.subscriptionForm.$error;
         if ($scope.subscriptionForm.$invalid) {
-            return
+            return;
         }
         // Wipe any form errors
         $scope.subscriptionForm.displayErrors = {};
-        NewsletterResource.subscribe({email: $scope.user.email}).$promise
+        return NewsletterResource.subscribe({email: $scope.user.email}).$promise
             .then(function() {
                 $scope.subscriptionForm.displayErrors.serverSuccess = true;
                 $scope.user.email = '';
@@ -56,15 +56,15 @@ angular.module('windsor.event')
             .catch(function(error) {
                 if (error.data.code) {
                     if (error.data.code === 214) {
-                        return $scope.subscriptionForm.displayErrors.alreadySubscribed = true;
+                        $scope.subscriptionForm.displayErrors.alreadySubscribed = true;
                     }
                 }
                 $scope.subscriptionForm.displayErrors.serverError = true;
             });
-    }
+    };
 }])
 
-.controller('EventViewController', ['$scope', '$state', 'Event', 'GeocodeResource', function($scope, $state, Event, GeocodeResource) {
+.controller('EventViewController', ['$scope', '$state', 'Event', function($scope, $state, Event) {
     $scope.dateFormat = "EEEE MMMM d 'at' h:mma";
     $scope.map = {
         center: {
@@ -81,7 +81,7 @@ angular.module('windsor.event')
     $scope.marker = {
         id: 'main',
         coordinates: {}
-    }
+    };
 
     Event.getEvent($state.params.id)
         .then(function(event) {
