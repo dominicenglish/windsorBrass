@@ -16,7 +16,14 @@ module.exports = function(grunt) {
             }
         },
         jshint: {
-            all: ['gruntfile.js', 'client/js/**/*.js', 'index.js', 'server/**/*.js']
+            all: [
+                'gruntfile.js',
+                'client/js/**/*.js',
+                'client/modules/**/*.js',
+                'index.js',
+                'server/**/*.js',
+                'test/**/*.js'
+            ]
         },
         nodemon: {
             default: {
@@ -91,7 +98,7 @@ module.exports = function(grunt) {
                 }
             },
             js: {
-                files: ['index.js', 'client/js/**', 'server/**/*.js'],
+                files: ['index.js', 'client/js/**', 'server/**/*.js', 'client/modules/**/*.js'],
                 tasks: ['jshint'],
                 options: {
                     livereload: true
@@ -125,7 +132,7 @@ module.exports = function(grunt) {
 
     grunt.option('force', true);
 
-    grunt.registerTask('default', ['jshint', 'concurrent:default']);
+    grunt.registerTask('default', ['concurrent:default', 'jshint', 'karma']);
     grunt.registerTask('debug', ['jshint', 'concurrent:debug']);
     grunt.registerTask('partials', ['jade']);
 };
