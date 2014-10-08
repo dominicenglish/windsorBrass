@@ -19,11 +19,11 @@ angular.module('windsor.event')
         '/api/newsletter/:action',
         {},
         {
+            // Should accept an object with {email: ''}
             subscribe: {
                 method: 'POST',
                 params: {
-                    action: 'subscribe',
-                    email: ''
+                    action: 'subscribe'
                 }
             }
         }
@@ -31,8 +31,8 @@ angular.module('windsor.event')
 }])
 
 .factory('Event', ['EventResource', '$q', 'GeocodeResource', function(EventResource, $q, GeocodeResource) {
-    var futureEvents = undefined;
-    var activeEvent = undefined;
+    var futureEvents;
+    var activeEvent;
 
     var getFutureEvents = function() {
         if (!futureEvents) {
@@ -40,10 +40,9 @@ angular.module('windsor.event')
             futureEvents = EventResource.get().$promise;
         }
         return futureEvents;
-    }
+    };
 
     var findEventById = function(id) {
-        console.log('findEventById');
         var deferred = $q.defer();
 
         if (activeEvent && activeEvent.id === id) {
@@ -56,12 +55,25 @@ angular.module('windsor.event')
                         activeEvent = event;
                         deferred.resolve(event);
                     }
-                })
+                });
                 deferred.reject('Not a valid event id');
+            })
+            .catch(function(reason) {
+                deferred.reject(reason);
             });
 
         return deferred.promise;
-    }
+    };
+
+    var geocodeAddress = function(event) {
+        return GeocodeResource.geocodeAddress({address: event.location}).$promise
+            .then(function(response) {
+                event.coordinates = {};
+                event.coordinates.latitude = response.results[0].geometry.location.lat;
+                event.coordinates.longitude = response.results[0].geometry.location.lng;
+                return event;
+            });
+    };
 
     return {
         getEvents: function() {
@@ -70,18 +82,9 @@ angular.module('windsor.event')
         getEvent: function(id) {
             return findEventById(id)
                 .then(function(event) {
-                    return GeocodeResource.geocodeAddress({address: event.location}).$promise
-                        .then(function(response) {
-                            event.coordinates = {};
-                            event.coordinates.latitude = response.results[0].geometry.location.lat;
-                            event.coordinates.longitude = response.results[0].geometry.location.lng;
-                            return event;
-                        })
+                    return geocodeAddress(event);
                 });
-        },
-        geocodeAddress: function(address) {
-
         }
-    }
+    };
 }])
 ;
