@@ -1,6 +1,7 @@
 angular.module('windsor.contact')
 
 .controller('ContactController', ['$scope', 'MessageTransport', function($scope, MessageTransport) {
+    $scope.contactForm = {displayErrors: {}};
     $scope.sender = {};
     $scope.sendMessage = function() {
         $scope.contactForm.displayErrors = $scope.contactForm.$error;
@@ -16,7 +17,7 @@ angular.module('windsor.contact')
         }
         // Wipe any form errors
         $scope.contactForm.displayErrors = {};
-        MessageTransport.email($scope.sender).$promise
+        return MessageTransport.email($scope.sender).$promise
             .then(function(response) {
                 $scope.contactForm.displayErrors.serverSuccess = true;
                 $scope.sender = {};
@@ -24,6 +25,6 @@ angular.module('windsor.contact')
             .catch(function(response) {
                 $scope.contactForm.displayErrors.serverError = true;
             });
-    }
+    };
 }])
 ;
