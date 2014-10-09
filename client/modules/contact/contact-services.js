@@ -1,13 +1,17 @@
-angular.module('windsor.contact')
+(function() {
+    'use strict';
 
-.factory('MessageTransport', ['$resource', function($resource) {
-    return $resource(
-        '/api/message',
-        {},
-        {
-            email: {
-                method: 'POST'
+    angular.module('windsor.contact')
+
+    .factory('MessageTransport', ['$resource', function($resource) {
+        return $resource(
+            '/api/message',
+            {},
+            {
+                email: {
+                    method: 'POST'
+                }
             }
-        }
-    );
-}]);
+        );
+    }]);
+}());

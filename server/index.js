@@ -1,12 +1,15 @@
+'use strict';
+
 var express = require('express'),
     viewHelpers = require('view-helpers'),
     nodemailer = require('nodemailer'),
     bodyParser = require('body-parser'),
     request = require('request'),
     config = require('./config'),
-    mcapi = require('mailchimp-api'),
     app = express(),
     port = 3003;
+
+require('mailchimp-api');
 
 // Should be placed before exp
 app.use(express.compress({
@@ -43,7 +46,7 @@ app.post('/api/message', function(req, res) {
         html: '<table><tr><td>Name:</td><td>'+req.body.name+'</td></tr><tr><td>Email:</td><td>'+req.body.email+'</td></tr><tr><td>Message:</td><td>'+req.body.message+'</td></tr></table>'
     };
 
-    transporter.sendMail(mailOptions, function(error, info) {
+    transporter.sendMail(mailOptions, function(error) {
         if (error) {
             console.log(error);
             res.send(500, 'Email was not sent');
@@ -110,7 +113,7 @@ app.use(function(err, req, res, next) {
 });
 
 //Assume 404 since no middleware responded
-app.use(function(req, res, next) {
+app.use(function(req, res) {
     res.status(404).render('404', {
         url: req.originalUrl,
         error: 'Not found'

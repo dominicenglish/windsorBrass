@@ -1,19 +1,23 @@
-angular.module('windsor.geocode')
+(function() {
+    'use strict';
 
-.factory('GeocodeResource', ['$resource', 'GoogleApiKey', function($resource, GoogleApiKey) {
+    angular.module('windsor.geocode')
 
-    return $resource(
-        'https://maps.googleapis.com/maps/api/geocode/json',
-        {
-            key: GoogleApiKey,
-            address: '@address'
-        },
-        {
-            geocodeAddress: {
-                method: 'GET',
-                cache: true
+    .factory('GeocodeResource', ['$resource', 'GoogleApiKey', function($resource, GoogleApiKey) {
+
+        return $resource(
+            'https://maps.googleapis.com/maps/api/geocode/json',
+            {
+                key: GoogleApiKey,
+                address: '@address'
+            },
+            {
+                geocodeAddress: {
+                    method: 'GET',
+                    cache: true
+                }
             }
-        }
-    );
-}])
-;
+        );
+    }])
+    ;
+}());

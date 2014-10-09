@@ -1,3 +1,4 @@
+'use strict';
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -16,14 +17,102 @@ module.exports = function(grunt) {
             }
         },
         jshint: {
-            all: [
-                'gruntfile.js',
-                'client/js/**/*.js',
-                'client/modules/**/*.js',
-                'index.js',
-                'server/**/*.js',
-                'test/**/*.js'
-            ]
+            options: {
+                bitwise: true,
+                camelcase: true,
+                curly: true,
+                eqeqeq: true,
+                forin: true,
+                freeze: true,
+                immed: true,
+                indent: 4,
+                latedef: 'nofunc',
+                newcap: true,
+                noarg: true,
+                noempty: true,
+                nonbsp: true,
+                nonew: true,
+                quotmark: true,
+                undef: true,
+                unused: true,
+                strict: true,
+                globals: {
+                    angular: false,
+                    module: true,
+                    '__dirname': false
+                },
+                jquery: true,
+                browser: true
+            },
+            client: {
+                options: {
+                    bitwise: true,
+                    camelcase: true,
+                    curly: true,
+                    eqeqeq: true,
+                    forin: true,
+                    freeze: true,
+                    immed: true,
+                    indent: 4,
+                    latedef: 'nofunc',
+                    newcap: true,
+                    noarg: true,
+                    noempty: true,
+                    nonbsp: true,
+                    nonew: true,
+                    quotmark: true,
+                    undef: true,
+                    unused: true,
+                    strict: true,
+                    globals: {
+                        angular: false,
+                        module: true,
+                        '__dirname': false
+                    },
+                    jquery: true,
+                    browser: true
+                },
+                files: {
+                    src: [
+                        'client/js/**/*.js',
+                        'client/modules/**/*.js'
+                    ]
+                }
+            },
+            server: {
+                options: {
+                    node: true,
+                    camelcase: false
+                },
+                files: {
+                    src: [
+                        'gruntfile.js',
+                        'index.js',
+                        'server/**/*.js'
+                    ]
+                }
+            },
+            test: {
+                options: {
+                    globals: {
+                        describe: false,
+                        it: false,
+                        beforeEach: false,
+                        afterEach: false,
+                        expect: false,
+                        inject: false,
+                        module: false,
+                        spyOn: false,
+                        angular: false,
+                        jasmine: false
+                    }
+                },
+                files: {
+                    src: [
+                        'test/**/*.js'
+                    ]
+                }
+            }
         },
         nodemon: {
             default: {
@@ -59,11 +148,11 @@ module.exports = function(grunt) {
                     pretty: true
                 },
                 files: [{
-                    cwd: "client/modules",
-                    src: "**/*.jade",
-                    dest: "client/modules",
+                    cwd: 'client/modules',
+                    src: '**/*.jade',
+                    dest: 'client/modules',
                     expand: true,
-                    ext: ".html"
+                    ext: '.html'
                 }]
             }
         },
@@ -132,7 +221,8 @@ module.exports = function(grunt) {
 
     grunt.option('force', true);
 
-    grunt.registerTask('default', ['concurrent:default', 'jshint', 'karma']);
+    grunt.registerTask('default', ['jshint', 'concurrent:default', 'karma']);
     grunt.registerTask('debug', ['jshint', 'concurrent:debug']);
     grunt.registerTask('partials', ['jade']);
+    grunt.registerTask('lint', ['jshint']);
 };
