@@ -9,6 +9,12 @@ module.exports = function(grunt) {
                     logConcurrentOutput: true
                 }
             },
+            serve: {
+                tasks: ['watch', 'nodemon'],
+                options: {
+                    logConcurrentOutput: true
+                }
+            },
             debug: {
                 tasks: ['watch', 'nodemon:debug', 'node-inspector'],
                 options: {
@@ -222,6 +228,7 @@ module.exports = function(grunt) {
     grunt.option('force', true);
 
     grunt.registerTask('default', ['jshint', 'concurrent:default', 'karma']);
+    grunt.registerTask('serve', ['concurrent:serve']);
     grunt.registerTask('debug', ['jshint', 'concurrent:debug']);
     grunt.registerTask('partials', ['jade']);
     grunt.registerTask('lint', ['jshint']);
