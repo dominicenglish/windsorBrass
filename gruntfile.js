@@ -220,7 +220,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-nodemon');
     grunt.loadNpmTasks('grunt-concurrent');
-    grunt.loadNpmTasks('grunt-sass');
+    // grunt-sass is better as it uses libsass, unfortunately it is buggy
+    // on linux and I need to wait until it uses version 2.x of node-sass
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-node-inspector');
     grunt.loadNpmTasks('grunt-karma');
