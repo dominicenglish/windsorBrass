@@ -13,17 +13,17 @@
     "jade": "latest",
     "nodemailer": "latest",
     "request": "^2.40.0",
-    "view-helpers": "latest"
-  },
-  "devDependencies": {
+    "view-helpers": "latest",
+    "grunt-sass": "latest",
     "grunt-concurrent": "latest",
     "grunt-contrib-jade": "latest",
-    "grunt-contrib-jshint": "latest",
-    "grunt-contrib-sass": "latest",
     "grunt-contrib-watch": "latest",
+    "grunt-nodemon": "latest"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "latest",
     "grunt-karma": "^0.9.0",
     "grunt-node-inspector": "^0.1.5",
-    "grunt-nodemon": "latest",
     "karma": "^0.12.23",
     "karma-chrome-launcher": "^0.1.5",
     "karma-jasmine": "^0.2.2"
