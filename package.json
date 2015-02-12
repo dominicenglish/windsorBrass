@@ -19,7 +19,8 @@
     "grunt-contrib-jade": "latest",
     "grunt-contrib-watch": "latest",
     "grunt-nodemon": "latest",
-    "mailchimp-api": "latest"
+    "mailchimp-api": "latest",
+    "compression": "latest"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "latest",

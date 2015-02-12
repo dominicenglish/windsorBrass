@@ -5,6 +5,7 @@ var express = require('express'),
     nodemailer = require('nodemailer'),
     bodyParser = require('body-parser'),
     request = require('request'),
+    compression = require('compression'),
     config = require('./config'),
     app = express(),
     port = 3003;
@@ -12,7 +13,7 @@ var express = require('express'),
 require('mailchimp-api');
 
 // Should be placed before exp
-app.use(express.compress({
+app.use(compression({
     filter: function(req, res) {
         return (/json|text|javascript|css/).test(res.getHeader('Content-Type'));
     },
