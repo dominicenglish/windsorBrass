@@ -178,6 +178,44 @@ module.exports = function(grunt) {
                 singleRun: false
             }
         },
+        uglify: {
+            default: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'client/modules/',
+                        src: '**/*.js',
+                        dest: 'client/dist/min'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'client/js/',
+                        src: '**/*.js',
+                        dest: 'client/dist/min'
+                    }
+                ]
+            }
+        },
+        concat: {
+            options: {
+                sourceMap: 'true'
+            },
+            dist: {
+                src: [
+                    'client/lib/angular-messages/angular-messages.min.js',
+                    'client/lib/angular-scroll/angular-scroll.min.js',
+                    'client/lib/angular-resource/angular-resource.min.js',
+                    'client/lib/angular-animate/angular-animate.min.js',
+                    'client/lib/angular-ui-router/release/angular-ui-router.min.js',
+                    'client/lib/angular-touch/angular-touch.min.js',
+                    'client/lib/lodash/dist/lodash.underscore.min.js',
+                    'client/lib/angular-google-maps/dist/angular-google-maps.min.js',
+                    'client/dist/min/app.js',
+                    'client/dist/min/**/*-module.js',
+                    'client/dist/min/**/*.js'],
+                dest: 'client/dist/concat.js'
+            }
+        },
         watch: {
             jade: {
                 files: ['server/views/**/*.jade'],
@@ -195,6 +233,13 @@ module.exports = function(grunt) {
             js: {
                 files: ['index.js', 'client/js/**', 'server/**/*.js', 'client/modules/**/*.js'],
                 tasks: ['jshint'],
+                options: {
+                    livereload: true
+                }
+            },
+            clientJs: {
+                files: ['client/modules/**/*.js', 'client/js/**/*.js'],
+                tasks: ['uglify', 'concat'],
                 options: {
                     livereload: true
                 }
@@ -226,13 +271,15 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-node-inspector');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-concat');
 
     grunt.option('force', true);
 
     grunt.registerTask('default', ['jshint', 'concurrent:default', 'karma']);
     grunt.registerTask('serve', ['concurrent:serve']);
     grunt.registerTask('debug', ['jshint', 'concurrent:debug']);
-    grunt.registerTask('init', ['sass', 'jade']);
+    grunt.registerTask('init', ['sass', 'jade', 'uglify', 'concat']);
     grunt.registerTask('partials', ['jade']);
     grunt.registerTask('lint', ['jshint']);
 };

@@ -6,3 +6,4 @@ client/modules/**/*.html
 .sass-cache/
 *sublime*
 server/config.js
+client/dist

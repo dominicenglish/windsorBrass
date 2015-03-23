@@ -7,20 +7,22 @@
   "dependencies": {
     "body-parser": "latest",
     "bower": "latest",
+    "compression": "latest",
     "express": "latest",
     "grunt": "latest",
     "grunt-cli": "latest",
-    "jade": "latest",
-    "nodemailer": "latest",
-    "request": "^2.40.0",
-    "view-helpers": "latest",
-    "grunt-contrib-sass": "latest",
     "grunt-concurrent": "latest",
+    "grunt-contrib-concat": "^0.5.1",
     "grunt-contrib-jade": "latest",
+    "grunt-contrib-sass": "latest",
+    "grunt-contrib-uglify": "^0.8.0",
     "grunt-contrib-watch": "latest",
     "grunt-nodemon": "latest",
+    "jade": "latest",
     "mailchimp-api": "latest",
-    "compression": "latest"
+    "nodemailer": "latest",
+    "request": "^2.40.0",
+    "view-helpers": "latest"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "latest",
