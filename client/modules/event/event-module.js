@@ -1,1 +1,1 @@
-angular.module('windsor.event', ['windsor.config', 'ngResource', 'ui.router']);
+angular.module('windsor.event', ['windsor.config', 'ngResource', 'ui.router', 'ngMessages']);

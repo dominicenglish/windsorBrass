@@ -1,1 +1,1 @@
-angular.module('windsor.contact', ['ngResource']);
+angular.module('windsor.contact', ['ngResource', 'ngMessages']);
