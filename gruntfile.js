@@ -232,6 +232,7 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['jshint', 'concurrent:default', 'karma']);
     grunt.registerTask('serve', ['concurrent:serve']);
     grunt.registerTask('debug', ['jshint', 'concurrent:debug']);
+    grunt.registerTask('init', ['sass', 'jade']);
     grunt.registerTask('partials', ['jade']);
     grunt.registerTask('lint', ['jshint']);
 };
