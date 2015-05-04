@@ -2,6 +2,7 @@
 
 var express = require('express'),
     viewHelpers = require('view-helpers'),
+    seo = require('mean-seo'),
     nodemailer = require('nodemailer'),
     bodyParser = require('body-parser'),
     request = require('request'),
@@ -28,6 +29,11 @@ app.use(bodyParser.json());
 
 // View helpers
 app.use(viewHelpers('windsor-brass'));
+
+app.use(seo({
+    cacheClient: 'disk',
+    cacheDuration: 1 * 60 * 60 * 24 * 1000
+}));
 
 // Routes
 app.post('/api/message', function(req, res) {

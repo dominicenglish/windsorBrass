@@ -20,6 +20,7 @@
     "grunt-nodemon": "latest",
     "jade": "latest",
     "mailchimp-api": "latest",
+    "mean-seo": "0.0.8",
     "nodemailer": "latest",
     "request": "^2.40.0",
     "view-helpers": "latest"
