@@ -179,6 +179,10 @@ module.exports = function(grunt) {
             }
         },
         uglify: {
+            options: {
+                sourceMap: true,
+                sourceMapIncludeSources: true
+            },
             default: {
                 files: [
                     {
@@ -210,8 +214,10 @@ module.exports = function(grunt) {
                     'client/lib/angular-touch/angular-touch.min.js',
                     'client/lib/lodash/dist/lodash.underscore.min.js',
                     'client/lib/angular-google-maps/dist/angular-google-maps.min.js',
-                    'client/dist/min/app.js',
+                    'client/lib/velocity/velocity.min.js',
+                    'client/lib/velocity/velocity.ui.min.js',
                     'client/dist/min/**/*-module.js',
+                    'client/dist/min/app.js',
                     'client/dist/min/**/*.js'],
                 dest: 'client/dist/concat.js'
             }
