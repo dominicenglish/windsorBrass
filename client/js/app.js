@@ -1,10 +1,10 @@
 (function() {
     'use strict';
 
-    angular.module('windsor', ['duScroll', 'ngResource', 'ngAnimate', 'ui.router', 'ngTouch', 'windsor.template', 'windsor.event', 'google-maps', 'windsor.config', 'windsor.geocode', 'windsor.about', 'windsor.contact']);
+    angular.module('windsor', ['duScroll', 'ngResource', 'ngAnimate', 'ui.router', 'ngTouch', 'windsor.event', 'google-maps', 'windsor.config', 'windsor.geocode', 'windsor.about', 'windsor.contact']);
 
     angular.module('windsor')
-    .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'TemplateProvider', function($stateProvider, $urlRouterProvider, $locationProvider, TemplateProvider) {
+    .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
 
         // Set HTML5 mode
         $locationProvider
@@ -14,23 +14,15 @@
         // For any unmatched url, rediret to index
         $urlRouterProvider.otherwise('/');
 
-        var templates = {
-            home: '/modules/home/home.html',
-            about: '/modules/about/about.html',
-            agenda: '/modules/event/agenda.html',
-            event: '/modules/event/event.html',
-            contact: '/modules/contact/contact.html'
-        };
-
         // Set up states
         $stateProvider
             .state('home', {
                 url: '/',
-                templateUrl: templates.home
+                templateUrl: '/modules/home/home.html'
             })
             .state('about', {
                 url: '/about',
-                templateUrl: templates.about
+                templateUrl: '/modules/about/about.html'
             })
             .state('event', {
                 abstract: true,
@@ -40,23 +32,20 @@
             })
             .state('event.list', {
                 url: '',
-                templateUrl: templates.agenda
+                templateUrl: '/modules/event/agenda.html'
             })
             .state('event.view', {
                 url: '/:id',
-                templateUrl: templates.event
+                templateUrl: '/modules/event/event.html'
             })
             .state('contact', {
                 url: '/contact',
-                templateUrl: templates.contact
+                templateUrl: '/modules/contact/contact.html'
             })
         ;
-
-        TemplateProvider.preloadTemplates(templates);
     }])
 
-    .controller('MainController', ['$scope', 'Event', 'Template', function($scope, Event, Template) {
-        Template.preload();
+    .controller('MainController', ['$scope', 'Event', function($scope, Event) {
         Event.getEvents();
     }])
     ;
