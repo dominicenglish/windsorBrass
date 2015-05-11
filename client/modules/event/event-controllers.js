@@ -40,10 +40,6 @@
             $scope.events = events;
         });
 
-        $scope.showEvent = function(event) {
-            $state.go('event.view', {'id': event.id});
-        };
-
         $scope.subscribe = function() {
             $scope.subscriptionForm.displayErrors = $scope.subscriptionForm.$error;
             if ($scope.subscriptionForm.$invalid) {

@@ -5,7 +5,7 @@ section.u-fullHeight(ng-controller="AgendaController")
         .Slat
             h2 Upcoming Gigs
             .Agenda
-                .Agenda-event(ng-repeat="event in events.items|filter:{visibility:'!private'}" ng-click="showEvent(event)")
+                a.Agenda-event(ng-repeat="event in events.items|filter:{visibility:'!private'}" ui-sref="event.view({id: event.id})")
                     .Agenda-date
                         .DateStacked
                             .DateStacked-day {{event.start.dateTime || event.start.date | date:'EEE'}}
