@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('windsor', ['duScroll', 'ngResource', 'ngAnimate', 'ui.router', 'ngTouch', 'windsor.event', 'google-maps', 'windsor.config', 'windsor.geocode', 'windsor.about', 'windsor.contact']);
+    angular.module('windsor', ['duScroll', 'ngResource', 'ngAnimate', 'ui.router', 'ngTouch', 'windsor.event', 'google-maps', 'windsor.config', 'windsor.root', 'windsor.home','windsor.geocode', 'windsor.about', 'windsor.contact']);
 
     angular.module('windsor')
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -43,10 +43,6 @@
                 templateUrl: '/modules/contact/contact.html'
             })
         ;
-    }])
-
-    .controller('MainController', ['$scope', 'Event', function($scope, Event) {
-        Event.getEvents();
     }])
     ;
 

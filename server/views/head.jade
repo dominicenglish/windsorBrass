@@ -3,10 +3,9 @@ head
   meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
   meta(name='viewport', content='width=device-width,initial-scale=1,user-scalable=no')
 
-  title= 'Windsor Brass'
+  title(ng-bind="Page.getTitle()")
   meta(http-equiv='Content-type', content='text/html;charset=UTF-8')
-  meta(name="keywords", content="Brass Band")
-  meta(name="description", content="Brass Band in Brisbane Australia")
+  meta(name="description", ng-attr-content="{{Page.getDescription()}}")
 
   link(rel="apple-touch-icon", sizes="57x57", href="/img/icon/apple-icon-57x57.png")
   link(rel="apple-touch-icon", sizes="60x60", href="/img/icon/apple-icon-60x60.png")
