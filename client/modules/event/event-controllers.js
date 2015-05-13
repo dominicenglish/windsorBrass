@@ -32,7 +32,9 @@
         });
     }])
 
-    .controller('AgendaController', ['$scope', '$state', 'Event', 'NewsletterResource', function($scope, $state, Event, NewsletterResource) {
+    .controller('AgendaController', ['$scope', '$state', 'Event', 'NewsletterResource', 'Page', function($scope, $state, Event, NewsletterResource, Page) {
+        Page.setTitleDescription("Upcoming Events")
+        Page.setDescription("Windsor Brass perform out in the public frequently as part of the Brisbane City Council Bands in Parks program. See a list of our upcoming performances.");
         $scope.user = {};
         $scope.subscriptionForm = {displayErrors: {}};
 

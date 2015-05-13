@@ -3,7 +3,10 @@
 
     angular.module('windsor.contact')
 
-    .controller('ContactController', ['$scope', 'MessageTransport', function($scope, MessageTransport) {
+    .controller('ContactController', ['$scope', 'MessageTransport', 'Page', function($scope, MessageTransport, Page) {
+        Page.setTitleDescription("Contact Us")
+        Page.setDescription("Windsor Brass is available for bookings. Contact us for more information!");
+
         $scope.contactForm = {displayErrors: {}};
         $scope.sender = {};
         $scope.sendMessage = function() {
