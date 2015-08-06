@@ -4,8 +4,8 @@
     angular.module('windsor.about')
 
     .controller('AboutController', ['$scope', 'Page', function($scope, Page) {
-        Page.setTitleDescription("About Us")
-        Page.setDescription("Windsor Brass has become well known around Brisbane for its many park performances, traditional marches and crowd-pleasing favourites.");
+        Page.setTitleDescription('About Us');
+        Page.setDescription('Windsor Brass has become well known around Brisbane for its many park performances, traditional marches and crowd-pleasing favourites.');
 
         $scope.map = {
             center: {
