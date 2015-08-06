@@ -2,18 +2,24 @@ section.event-page(ng-controller="EventViewController")
     button.IconButton.BackButton(ui-sref="event.list")
         i.fa.fa-arrow-left.fa-2x
     .Container
-        .Event
+        .Event(itemscope, itemtype="http://schema.org/MusicEvent")
+            span(itemprop="url" ng-attr-content="http://www.windsorband.com.au/events/{{event.id}}")
             .Event-title
-                h1 {{event.summary}}
+                h1(itemprop="name") {{event.summary}}
             .Event-details
                 .Event-details-row
                     span.title When:
-                    span.detail {{event.start.dateTime || event.start.date | date:dateFormat}}
+                    span.detail(itemprop="startDate" ng-attr-content="{{event.start.dateTime || event.start.date}}") {{event.start.dateTime || event.start.date | date:dateFormat}}
                 .Event-details-row
                     span.title Where:
-                    span.detail {{event.location}}
+                    span.detail(itemprop="location" itemscope itemtype="http://schema.org/PostalAddress")
+                        span(itemprop="streetAddress") {{event.address.streetAddress}},&nbsp;
+                        span(itemprop="addressLocality") {{event.address.addressLocality}}&nbsp;
+                        span(itemprop="addressRegion") {{event.address.addressRegion}}&nbsp;
+                        span(itemprop="postalCode") {{event.address.postalCode}}
+                        span(itemprop="addressCountry" content="event.address.addressCountry")
             .Event-map
                 google-map(center="map.center" zoom="map.zoom" draggable="true" options="map.options")
                     marker(idkey="marker.id" coords="marker.coordinates")
             .Event-description
-                <pre>{{event.description}}</pre>
+                <pre itemprop="description">{{event.description}}</pre>
