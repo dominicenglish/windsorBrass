@@ -74,9 +74,43 @@
                     event.coordinates = {};
                     event.coordinates.latitude = response.results[0].geometry.location.lat;
                     event.coordinates.longitude = response.results[0].geometry.location.lng;
+                    event.address = assembleSchemaAddress(response.results[0].address_components);
                     return event;
                 });
         };
+
+        /**
+         * Assembles an address object compatible with schema.org/PostalAddress
+         * format.
+         *
+         * @param  {Object} addressComponents Address components from Google Geocode
+         *
+         * @return {Object}
+         */
+        var assembleSchemaAddress = function(addressComponents) {
+            var address = {};
+            if (!addressComponents) return address;
+
+            var addressMap = {
+                'street_number': 'streetAddress',
+                'route': 'streetAddress',
+                'locality': 'addressLocality',
+                'administrative_area_level_1': 'addressRegion',
+                'country': 'addressCountry',
+                'postal_code': 'postalCode'
+            };
+
+            addressComponents.forEach(function(value) {
+                var oldType = value.types[0];
+                var newType = addressMap[oldType];
+                if (!address[newType]) {
+                    address[newType] = value.long_name;
+                } else {
+                    address[newType] += ' ' + value.long_name;
+                }
+            });
+            return address;
+        }
 
         return {
             getEvents: function() {
