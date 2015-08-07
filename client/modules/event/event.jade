@@ -10,9 +10,9 @@ section.event-page(ng-controller="EventViewController")
                 .Event-details-row
                     span.title When:
                     span.detail(itemprop="startDate" ng-attr-content="{{event.start.dateTime || event.start.date}}") {{event.start.dateTime || event.start.date | date:dateFormat}}
-                .Event-details-row
+                .Event-details-row(itemprop="location" itemscope itemtype="http://schema.org/Place")
                     span.title Where:
-                    span.detail(itemprop="location" itemscope itemtype="http://schema.org/PostalAddress")
+                    span.detail(itemprop="address" itemscope itemtype="http://schema.org/PostalAddress")
                         span(itemprop="streetAddress") {{event.address.streetAddress}},&nbsp;
                         span(itemprop="addressLocality") {{event.address.addressLocality}}&nbsp;
                         span(itemprop="addressRegion") {{event.address.addressRegion}}&nbsp;
