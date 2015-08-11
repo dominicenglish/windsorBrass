@@ -25,6 +25,7 @@
             $scope.contactForm.displayErrors = {};
             return MessageTransport.email($scope.sender).$promise
                 .then(function() {
+                    $scope.contactForm.$setPristine();
                     $scope.contactForm.displayErrors.serverSuccess = true;
                     $scope.sender = {};
                 })
