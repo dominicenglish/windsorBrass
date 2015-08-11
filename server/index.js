@@ -56,9 +56,9 @@ app.post('/api/message', function(req, res) {
     transporter.sendMail(mailOptions, function(error) {
         if (error) {
             console.log(error);
-            res.send(500, 'Email was not sent');
+            res.status(500).send('Email was not sent');
         } else {
-            res.send(200, 'Success, email was sent');
+            res.status(200).send('Success, email was sent');
         }
     });
 });
@@ -103,7 +103,7 @@ app.post('/api/newsletter/subscribe', function(req, res, next) {
                 }
                 return next(new Error(responseMessage));
             }
-            res.send(200, 'Success, user was subscribed to mailing list');
+            res.status(200).send('Success, user was subscribed to mailing list');
         }
     );
 });
@@ -114,7 +114,7 @@ app.all('*', function(req, res) {
 // Error handling
 app.use(function(err, req, res, next) {
     if (err) {
-        return res.send(500, err);
+        return res.status(500).send(err);
     }
     next(err);
 });
