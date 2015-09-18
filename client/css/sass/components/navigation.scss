@@ -3,6 +3,7 @@ $navigationHeight: 50px;
 .Navigation {
     position: absolute;
     display: table;
+    table-layout: fixed;
     top: 0;
     width: 100%;
     height: $navigationHeight;
